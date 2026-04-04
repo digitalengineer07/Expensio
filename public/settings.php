@@ -48,12 +48,14 @@ $metrics = [
     <?php include __DIR__ . '/includes/theme-head.php'; ?>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
-<body class="bg-expensio min-h-screen flex font-sans overflow-hidden">
+<body class="bg-gray-100 dark:bg-black h-[100dvh] w-full flex items-center justify-center font-sans overflow-hidden md:py-3 md:px-4 lg:py-4 lg:px-6">
 
-    <?php include __DIR__ . '/includes/sidebar.php'; ?>
+    <!-- Outermost Rounded Web App Shell -->
+    <div class="w-full h-full bg-expensio dark:bg-[#121317] md:rounded-[36px] overflow-hidden shadow-2xl shadow-gray-200/50 dark:shadow-none border border-gray-200 dark:border-white/5 flex flex-row relative">
 
-    <!-- Main Content -->
-    <main class="flex-1 h-screen overflow-y-auto custom-scrollbar relative">
+        <?php include __DIR__ . '/includes/sidebar.php'; ?>
+
+        <main class="flex-1 h-full overflow-y-auto custom-scrollbar relative">
         
         <?php
         $page_title = 'Settings';
@@ -544,5 +546,6 @@ $metrics = [
             modal.classList.toggle('hidden');
         }
     </script>
+    </div>
 </body>
 </html>

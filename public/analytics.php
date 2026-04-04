@@ -48,13 +48,14 @@ $metrics = [
     <?php include __DIR__ . '/includes/theme-head.php'; ?>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
-<body class="bg-expensio min-h-screen flex font-sans overflow-hidden">
+<body class="bg-gray-100 dark:bg-black h-[100dvh] w-full flex items-center justify-center font-sans overflow-hidden md:py-3 md:px-4 lg:py-4 lg:px-6">
 
-    <!-- Sidebar -->
-    <?php include __DIR__ . '/includes/sidebar.php'; ?>
+    <!-- Outermost Rounded Web App Shell -->
+    <div class="w-full h-full bg-expensio dark:bg-[#121317] md:rounded-[36px] overflow-hidden shadow-2xl shadow-gray-200/50 dark:shadow-none border border-gray-200 dark:border-white/5 flex flex-row relative">
 
-    <!-- Main Content -->
-    <main class="flex-1 h-screen overflow-y-auto custom-scrollbar relative pb-20 md:pb-0">
+        <?php include __DIR__ . '/includes/sidebar.php'; ?>
+
+        <main class="flex-1 h-full overflow-y-auto custom-scrollbar relative pb-20 md:pb-0">
         
         <?php
         $page_title = 'Analytics';
@@ -62,8 +63,8 @@ $metrics = [
         include __DIR__ . '/includes/header.php'; ?>
 
         <!-- Layout Controls (Month picker & Manage) -->
-        <div class="px-6 flex justify-between items-center mb-6 animate-fade">
-            <button onclick="alert('Date picker coming soon!');" class="flex items-center gap-2 border border-gray-200 rounded-full px-4 py-2 bg-white text-sm font-semibold text-gray-900 shadow-sm hover:bg-gray-50 transition-all">
+        <div class="px-8 lg:px-10 pt-8 flex justify-between items-center mb-8 animate-fade">
+            <button onclick="alert('Date picker coming soon!');" class="flex items-center gap-2 border border-gray-200/60 rounded-full px-5 py-2.5 bg-white text-sm font-semibold text-gray-900 shadow-sm hover:bg-gray-50 transition-all hover:border-expensio-purple/30">
                 <i class='bx bx-calendar text-gray-500 text-lg'></i>
                 This month
             </button>
@@ -80,9 +81,9 @@ $metrics = [
         </div>
 
         <!-- Metrics Section -->
-        <section class="px-6 grid grid-cols-1 lg:grid-cols-3 gap-6 animate-fade" style="animation-delay: 0.1s;">
+        <section class="px-8 lg:px-10 grid grid-cols-1 lg:grid-cols-3 gap-6 animate-fade" style="animation-delay: 0.1s;">
             <!-- Total Balance -->
-            <div class="glass-panel p-6 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] transition-all flex flex-col justify-between">
+            <div class="glass-panel p-7 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_30px_-6px_rgba(0,0,0,0.1)] flex flex-col justify-between border-t-2 border-t-[#8B5CF6]/20">
                 <div class="flex justify-between items-center mb-4">
                     <h3 class="font-bold text-gray-900 text-[15px]">Total balance</h3>
                     <div class="flex items-center cursor-pointer gap-1 border border-gray-200 rounded-full px-2 py-0.5 text-[11px] font-bold text-gray-500 hover:bg-gray-50 transition-colors">
@@ -152,7 +153,7 @@ $metrics = [
         </section>
 
         <!-- Main Grid -->
-        <section class="p-6 grid grid-cols-1 lg:grid-cols-3 gap-6 mb-10 animate-fade" style="animation-delay: 0.2s;">
+        <section class="px-8 lg:px-10 grid grid-cols-1 lg:grid-cols-3 gap-6 mb-10 animate-fade" style="animation-delay: 0.2s;">
             
             <!-- Left Chart Column -->
             <div class="lg:col-span-2 space-y-6">
@@ -228,7 +229,36 @@ $metrics = [
             </div>
 
         </section>
-        
+
+        <!-- Deep Analytics Grid -->
+        <section class="px-8 lg:px-10 grid grid-cols-1 lg:grid-cols-2 gap-6 mb-10 animate-fade" style="animation-delay: 0.3s;">
+            <!-- Cash Flow Waterfall -->
+            <div class="glass-panel p-7 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] transition-all duration-300 hover:shadow-[0_12px_30px_-6px_rgba(0,0,0,0.08)] relative">
+                <div class="flex items-center justify-between mb-6">
+                    <h3 class="text-[15px] font-bold text-gray-900">Cash Flow Tracking</h3>
+                    <div class="flex items-center gap-2 border border-gray-200 rounded-full px-3 py-1 text-[11px] font-bold text-gray-500 hover:bg-gray-50 cursor-pointer transition-colors shadow-sm">
+                        Quarterly <i class='bx bx-chevron-down text-sm'></i>
+                    </div>
+                </div>
+                <div class="h-[260px] w-full relative">
+                    <canvas id="cashflowChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Spending by Project/Category Radar -->
+            <div class="glass-panel p-7 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] transition-all duration-300 hover:shadow-[0_12px_30px_-6px_rgba(0,0,0,0.08)] relative">
+                <div class="flex items-center justify-between mb-6">
+                    <h3 class="text-[15px] font-bold text-gray-900">Spending Radar</h3>
+                    <div class="flex items-center gap-2 border border-gray-200 rounded-full px-3 py-1 text-[11px] font-bold text-gray-500 hover:bg-gray-50 cursor-pointer transition-colors shadow-sm">
+                        This Month <i class='bx bx-chevron-down text-sm'></i>
+                    </div>
+                </div>
+                <div class="h-[260px] w-full relative flex justify-center mt-2">
+                    <canvas id="patternsChart"></canvas>
+                </div>
+            </div>
+        </section>
+
         <!-- Floating Action Button -->
         <button onclick="toggleModal('addExpenseModal')" class="fixed bottom-8 right-8 w-14 h-14 bg-expensio-dark text-white rounded-[20px] shadow-2xl flex items-center justify-center hover:bg-expensio-purple transition-all transform hover:scale-110 active:scale-95 group z-40">
             <i class='bx bx-plus text-3xl group-hover:rotate-90 transition-all duration-300'></i>
@@ -457,6 +487,111 @@ $metrics = [
                 }
             }
         });
+
+        // 4. Cash Flow Analysis (Bar)
+        const ctxCashflow = document.getElementById('cashflowChart').getContext('2d');
+        new Chart(ctxCashflow, {
+            type: 'bar',
+            data: {
+                labels: ['Q1', 'Q2', 'Q3', 'Q4'],
+                datasets: [
+                    {
+                        label: 'Gross Income',
+                        data: [45000, 52000, 48000, 61000],
+                        backgroundColor: '#10B981', // green
+                        borderRadius: {topLeft: 6, topRight: 6, bottomLeft: 0, bottomRight: 0},
+                        barPercentage: 0.5,
+                        categoryPercentage: 0.6
+                    },
+                    {
+                        label: 'Total Expenses',
+                        data: [32000, 41000, 39000, 45000],
+                        backgroundColor: '#EF4444', // red
+                        borderRadius: {topLeft: 6, topRight: 6, bottomLeft: 0, bottomRight: 0},
+                        barPercentage: 0.5,
+                        categoryPercentage: 0.6
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        mode: 'index',
+                        intersect: false,
+                        backgroundColor: '#ffffff',
+                        titleColor: '#1F2024',
+                        bodyColor: '#6B7280',
+                        borderColor: '#F3F4F6',
+                        borderWidth: 1,
+                        padding: 12,
+                        callbacks: {
+                            label: function(context) { return context.dataset.label + ': ₹' + context.parsed.y.toLocaleString(); }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: { color: '#F3F4F6', drawBorder: false, borderDash: [5, 5] },
+                        border: { display: false },
+                        ticks: { callback: function(value) { return '₹' + (value/1000) + 'k'; }, font: {size: 10} }
+                    },
+                    x: {
+                        grid: { display: false, drawBorder: false },
+                        ticks: { font: {size: 11, weight: 'bold'} }
+                    }
+                }
+            }
+        });
+
+        // 5. Spending Patterns (Radar Chart)
+        const ctxPatterns = document.getElementById('patternsChart').getContext('2d');
+        new Chart(ctxPatterns, {
+            type: 'radar',
+            data: {
+                labels: ['Dining', 'Transit', 'Housing', 'Media', 'Retail', 'Bills'],
+                datasets: [{
+                    label: 'Current Month',
+                    data: [85, 45, 100, 60, 40, 75],
+                    backgroundColor: 'rgba(124, 58, 237, 0.15)', // purple transparent
+                    borderColor: '#7C3AED',
+                    borderWidth: 2,
+                    pointBackgroundColor: '#7C3AED',
+                    pointBorderColor: '#fff',
+                    pointBorderWidth: 2,
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: '#7C3AED',
+                    pointRadius: 4,
+                    pointHoverRadius: 6
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        backgroundColor: '#1F2024',
+                        titleColor: '#ffffff',
+                        bodyColor: '#D1D5DB',
+                        padding: 10,
+                        displayColors: false
+                    }
+                },
+                scales: {
+                    r: {
+                        angleLines: { color: 'rgba(243, 244, 246, 0.8)' },
+                        grid: { color: 'rgba(243, 244, 246, 0.8)', circular: true },
+                        pointLabels: { font: { size: 10, family: "'Inter', sans-serif", weight: 'bold' }, color: '#6B7280' },
+                        ticks: { display: false, beginAtZero: true } // Hide numbers on the radar rings
+                    }
+                }
+            }
+        });
     </script>
+    </div>
 </body>
 </html>

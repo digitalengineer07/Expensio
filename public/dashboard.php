@@ -48,7 +48,7 @@ $metrics = [
     <?php include __DIR__ . '/includes/theme-head.php'; ?>
     <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<body class="bg-gray-100 dark:bg-black min-h-screen flex items-center justify-center font-sans overflow-hidden md:py-3 md:px-4 lg:py-5 lg:px-6">
+<body class="bg-gray-100 dark:bg-black h-[100dvh] w-full flex items-center justify-center font-sans overflow-hidden md:py-3 md:px-4 lg:py-4 lg:px-6">
 
     <!-- Outermost Rounded Web App Shell -->
     <div class="w-full h-full bg-expensio dark:bg-[#121317] md:rounded-[36px] overflow-hidden shadow-2xl shadow-gray-200/50 dark:shadow-none border border-gray-200 dark:border-white/5 flex flex-row relative">
@@ -64,7 +64,7 @@ $metrics = [
         include __DIR__ . '/includes/header.php'; ?>
 
         <!-- Layout Controls (Month picker & Manage) -->
-        <div class="px-6 pt-8 flex justify-between items-center mb-6 animate-fade">
+        <div class="px-8 lg:px-10 pt-8 flex justify-between items-center mb-8 animate-fade">
             <h2 class="text-gray-500 font-medium text-[15px] hidden sm:block">Plan, track, and manage your expenses with ease.</h2>
             <div class="flex flex-col sm:hidden">
                 <span class="text-gray-500 font-medium text-[14px]">Overview</span>
@@ -82,9 +82,9 @@ $metrics = [
         </div>
 
         <!-- Metrics Section -->
-        <section class="px-6 grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6 animate-fade" style="animation-delay: 0.1s;">
+        <section class="px-8 lg:px-10 grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8 animate-fade" style="animation-delay: 0.1s;">
             <!-- Total Balance -->
-            <div class="glass-panel p-6 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] transition-all flex flex-col justify-between">
+            <div class="glass-panel p-7 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_30px_-6px_rgba(0,0,0,0.1)] flex flex-col justify-between border-t-2 border-t-[#8B5CF6]/20">
                 <div class="flex justify-between items-center mb-4">
                     <h3 class="font-bold text-gray-900 text-[15px]">Total balance</h3>
                     <div class="flex items-center cursor-pointer gap-1 border border-gray-200 rounded-full px-2 py-0.5 text-[11px] font-bold text-gray-500 hover:bg-gray-50 transition-colors">
@@ -107,7 +107,7 @@ $metrics = [
             </div>
 
             <!-- Income -->
-            <div class="glass-panel p-6 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] transition-all flex flex-col justify-between">
+            <div class="glass-panel p-7 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_30px_-6px_rgba(0,0,0,0.1)] flex flex-col justify-between border-t-2 border-t-green-500/20">
                 <div class="flex justify-between items-center mb-4">
                     <h3 class="font-bold text-gray-900 text-[15px]">Income</h3>
                     <div class="flex items-center cursor-pointer gap-1 border border-gray-200 rounded-full px-2 py-0.5 text-[11px] font-bold text-gray-500 hover:bg-gray-50 transition-colors">
@@ -130,7 +130,7 @@ $metrics = [
             </div>
 
             <!-- Expense -->
-            <div class="glass-panel p-6 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] transition-all flex flex-col justify-between">
+            <div class="glass-panel p-7 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_30px_-6px_rgba(0,0,0,0.1)] flex flex-col justify-between border-t-2 border-t-red-500/20">
                 <div class="flex justify-between items-center mb-4">
                     <h3 class="font-bold text-gray-900 text-[15px]">Expense</h3>
                     <div class="flex items-center cursor-pointer gap-1 border border-gray-200 rounded-full px-2 py-0.5 text-[11px] font-bold text-gray-500 hover:bg-gray-50 transition-colors">
@@ -154,12 +154,12 @@ $metrics = [
         </section>
 
         <!-- Main Grid -->
-        <section class="px-6 grid grid-cols-1 lg:grid-cols-3 gap-6 mb-10 animate-fade" style="animation-delay: 0.2s;">
+        <section class="px-8 lg:px-10 grid grid-cols-1 lg:grid-cols-3 gap-6 mb-12 animate-fade" style="animation-delay: 0.2s;">
             
             <!-- Left Chart Column -->
             <div class="lg:col-span-2 space-y-6">
                 <!-- Total Balance Overview (Line Chart) -->
-                <div class="glass-panel p-6 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)]">
+                <div class="glass-panel p-7 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] transition-all duration-300 hover:shadow-[0_12px_30px_-6px_rgba(0,0,0,0.08)]">
                     <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-6 gap-4">
                         <h3 class="text-[15px] font-bold text-gray-900">Total balance overview</h3>
                         <div class="flex flex-wrap items-center gap-5 text-[11px] font-semibold">
@@ -176,7 +176,7 @@ $metrics = [
                 </div>
 
                 <!-- Comparing of budget and expence (Bar Chart) -->
-                <div class="glass-panel p-6 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)]">
+                <div class="glass-panel p-7 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] transition-all duration-300 hover:shadow-[0_12px_30px_-6px_rgba(0,0,0,0.08)]">
                     <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-6 gap-4">
                         <h3 class="text-[15px] font-bold text-gray-900">Comparing of budget and expence</h3>
                         <div class="flex flex-wrap items-center gap-5 text-[11px] font-semibold">
@@ -194,7 +194,7 @@ $metrics = [
             </div>
 
             <!-- Budget Analytics -->
-            <div class="glass-panel p-6 flex flex-col justify-between overflow-hidden relative shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)]">
+            <div class="glass-panel p-7 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] transition-all duration-300 hover:shadow-[0_12px_30px_-6px_rgba(0,0,0,0.08)] flex flex-col justify-between overflow-hidden relative border-t-2 border-t-purple-500/20">
                 <div class="relative z-10 w-full">
                     <div class="flex items-center justify-between mb-2">
                         <h3 class="text-[15px] font-bold text-gray-900">Statistics</h3>

@@ -48,13 +48,14 @@ $metrics = [
     <?php include __DIR__ . '/includes/theme-head.php'; ?>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
-<body class="bg-expensio min-h-screen flex font-sans overflow-hidden">
+<body class="bg-gray-100 dark:bg-black h-[100dvh] w-full flex items-center justify-center font-sans overflow-hidden md:py-3 md:px-4 lg:py-4 lg:px-6">
 
-    <!-- Sidebar -->
-    <?php include __DIR__ . '/includes/sidebar.php'; ?>
+    <!-- Outermost Rounded Web App Shell -->
+    <div class="w-full h-full bg-expensio dark:bg-[#121317] md:rounded-[36px] overflow-hidden shadow-2xl shadow-gray-200/50 dark:shadow-none border border-gray-200 dark:border-white/5 flex flex-row relative">
 
-    <!-- Main Content -->
-    <main class="flex-1 h-screen overflow-y-auto custom-scrollbar relative pb-20 md:pb-0">
+        <?php include __DIR__ . '/includes/sidebar.php'; ?>
+
+        <main class="flex-1 h-full overflow-y-auto custom-scrollbar relative pb-20 md:pb-0">
         
         <?php
         $page_title = 'Transactions';
@@ -62,8 +63,8 @@ $metrics = [
         include __DIR__ . '/includes/header.php'; ?>
 
         <!-- Layout Controls (Month picker & Manage) -->
-        <div class="px-6 flex justify-between items-center mb-6 animate-fade">
-            <button class="flex items-center gap-2 border border-gray-200 rounded-full px-4 py-2 bg-white text-sm font-semibold text-gray-900 shadow-sm hover:bg-gray-50 transition-all">
+        <div class="px-8 lg:px-10 pt-8 flex justify-between items-center mb-8 animate-fade">
+            <button class="flex items-center gap-2 border border-gray-200/60 rounded-full px-5 py-2.5 bg-white text-sm font-semibold text-gray-900 shadow-sm hover:bg-gray-50 transition-all hover:border-expensio-purple/30">
                 <i class='bx bx-calendar text-gray-500 text-lg'></i>
                 Filter By Date
             </button>
@@ -76,8 +77,8 @@ $metrics = [
         </div>
 
         <!-- Transaction List Section -->
-        <section class="px-6 mb-10 animate-fade" id="transactions-container">
-            <div class="glass-panel p-6 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] w-full overflow-hidden">
+        <section class="px-8 lg:px-10 mb-10 animate-fade" id="transactions-container">
+            <div class="glass-panel p-7 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] w-full overflow-hidden transition-all duration-300 hover:shadow-[0_12px_30px_-6px_rgba(0,0,0,0.08)]">
                 <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-6 gap-4">
                     <h3 class="text-lg font-bold text-gray-900">Recent Transactions</h3>
                     <div class="flex items-center gap-2">
@@ -253,5 +254,6 @@ $metrics = [
         // Load on start
         loadTransactions(1);
     </script>
+    </div>
 </body>
 </html>
