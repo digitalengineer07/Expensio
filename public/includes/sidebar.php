@@ -67,21 +67,25 @@ function navItem($href, $icon, $label, $current_page) {
             
             <?php echo navItem('settings.php', 'bx-cog', 'Settings', $current_page); ?>
             <?php echo navItem('profile.php', 'bx-support', 'Help', $current_page); ?>
+            
+            <div class="pt-6"></div>
+            <div class="mx-4 border-t border-gray-100/50 mb-3 block"></div>
+            
+            <button onclick="expensioToggleTheme()" class="flex items-center gap-3.5 px-4 py-3 rounded-2xl text-gray-400 hover:bg-gray-50/80 hover:text-gray-800 transition-all duration-200 w-full text-left group">
+                <i class='bx bx-moon text-[22px] shrink-0 w-6 text-center group-hover:text-yellow-500 transition-colors' id="sidebar-theme-icon"></i>
+                <span class="text-[14px] font-medium tracking-wide truncate">Dark mode</span>
+            </button>
+            <a href="../app/Controllers/AuthController.php?action=logout" class="flex items-center gap-3.5 px-4 py-3 rounded-2xl text-gray-400 hover:bg-red-50/50 hover:text-red-500 transition-all duration-200 group w-full text-left">
+                <i class='bx bx-log-out text-[22px] shrink-0 w-6 text-center group-hover:text-red-500 transition-colors'></i>
+                <span class="text-[14px] font-medium tracking-wide truncate">Log out</span>
+            </a>
+            
+            <div class="pb-10"></div>
         </div>
 
     </nav>
 
-    <!-- Bottom: Theme Toggle + Logout -->
-    <div class="hidden md:flex flex-col gap-2 px-4 pb-6 w-full mt-auto border-t border-gray-100 pt-5">
-        <button onclick="expensioToggleTheme()" class="flex items-center gap-3.5 px-4 py-3.5 rounded-xl text-gray-500 hover:bg-gray-100 hover:text-gray-900 transition-all duration-200 w-full text-left">
-            <i class='bx bx-moon text-[22px] shrink-0 w-6 text-center' id="sidebar-theme-icon"></i>
-            <span class="text-[14px] font-medium tracking-wide truncate">Dark mode</span>
-        </button>
-        <a href="../app/Controllers/AuthController.php?action=logout" class="flex items-center gap-3.5 px-4 py-3.5 rounded-xl text-gray-500 hover:bg-red-50 hover:text-red-500 transition-all duration-200">
-            <i class='bx bx-log-out text-[22px] shrink-0 w-6 text-center'></i>
-            <span class="text-[14px] font-medium tracking-wide truncate">Log out</span>
-        </a>
-    </div>
+
     
 </aside>
 
